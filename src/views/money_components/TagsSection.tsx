@@ -34,10 +34,14 @@ const Wrapper = styled.section`
     color: #666;
   }
 `;
-const TagsSection:FC = ()=>{
 
+type Props={
+  value:string[],
+  onChange:(selected:string[])=>void
+}
+const TagsSection:FC<Props> = (props)=>{
   const [tags,setTags] = useState<string[]>(['衣','食','住','行']);
-  const [selectedTags,setSelectedTags] = useState<string[]>([]);
+  const selectedTags=props.value;
   const onAddTag = ()=>{
     const tagName = window.prompt('请输入新的标签名')
     if(tagName!== null){
@@ -47,9 +51,9 @@ const TagsSection:FC = ()=>{
   const onToggleTag=(tag:string)=>{
     const index = selectedTags.indexOf(tag);
     if(index>=0){
-      setSelectedTags(selectedTags.filter(t=>t!==tag))
+      props.onChange(selectedTags.filter(t=>t!==tag))
     }else{
-      setSelectedTags([...selectedTags,tag])
+      props.onChange([...selectedTags,tag])
     }
   }
   return(
