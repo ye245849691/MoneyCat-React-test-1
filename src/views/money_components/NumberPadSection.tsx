@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, {FC} from 'react';
 
-const _NumberPadSection = styled.section`
+const Wrapper = styled.section`
   > .output {
     background-color: white;
     line-height: 72px;
@@ -56,7 +56,7 @@ const _NumberPadSection = styled.section`
 `;
 const NumberPadSection:FC = ()=>{
   return(
-    <_NumberPadSection>
+    <Wrapper>
       <div className="output">100</div>
       <div className="pad clearfix">
         <button>1</button>
@@ -74,7 +74,7 @@ const NumberPadSection:FC = ()=>{
         <button className="zero">0</button>
         <button>.</button>
       </div>
-    </_NumberPadSection>
+    </Wrapper>
   )
 }
 export {NumberPadSection}
