@@ -5,63 +5,39 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Layout from './components/Layout';
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tags';
+import NoMatch from './views/NoMatch';
 
 
 function App() {
   return (
     <Router>
-        <Switch>
-          <Route path="/tags">
-            <Tags/>
-          </Route>
-          <Route path="/money">
-            <Money/>
-          </Route>
-          <Route path="/statistics">
-            <Statistics/>
-          </Route>
-          <Redirect exact from="/" to="/money"/>
-          <Route path="*">
-            <NoMatch/>
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path="/tags">
+          <Tags/>
+        </Route>
+        <Route path="/money">
+          <Money/>
+        </Route>
+        <Route path="/statistics">
+          <Statistics/>
+        </Route>
+        <Redirect exact from="/" to="/money"/>
+        <Route path="*">
+          <NoMatch/>
+        </Route>
+      </Switch>
     </Router>
   );
 }
 
-function NoMatch() {
-  return (
-    <div>
-      <h3>
-        页面不存在
-      </h3>
-    </div>
-  );
-}
 
-function Statistics() {
-  return(
-    <Layout>
-      <h2>统计页面</h2>
-    </Layout>
-  );
-}
 
-function Tags() {
-  return(
-    <Layout>
-      <h2>标签页面</h2>
-    </Layout>
-  );
-}
 
-function Money() {
-  return(
-    <Layout>
-      <h2>记账页面</h2>
-    </Layout>
-  );
-}
+
+
+
 
 export default App;
