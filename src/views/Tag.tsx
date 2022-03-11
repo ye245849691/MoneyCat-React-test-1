@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {useParams} from 'react-router-dom'
+import {useTags} from '../useTags';
 
-const Tag = ()=>{
+type Param={
+  id: string;
+}
+
+const Tag: FC = ()=>{
+  const {findTag}= useTags()
+  const {id} = useParams<Param>()
+
   return (
     <div>
-      你好
+      {findTag(parseInt(id)).name}
     </div>
   )
 }
