@@ -9,7 +9,20 @@ const defaultTags =[{id:createId(),name:"衣"},
 const useTags = ()=>{
   const [tags,setTags] = useState<{id:number,name:string}[]>(defaultTags);
   const findTag = (id:number)=>tags.filter(tag=>tag.id===id)[0]
-  return {tags,setTags,findTag}
+
+  const updateTag = (id:number,name:string)=>{
+    setTags(tags.map(tag=>{
+      if(tag.id===id){
+        return {id,name}
+      }else{
+        return tag;
+      }
+    }))
+  }
+  const deleteTag=(id:number)=>{
+    setTags(tags.filter(tag=>tag.id!==id));
+  }
+  return {tags,setTags,findTag,updateTag,deleteTag}
 }
 
 export {useTags}
