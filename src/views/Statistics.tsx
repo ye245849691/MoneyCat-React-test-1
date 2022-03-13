@@ -4,6 +4,7 @@ import {CategorySection} from './money_components/CategorySection';
 import styled from 'styled-components';
 import {useRecords} from '../hooks/useRecords';
 import {useTags} from '../hooks/useTags';
+import {TagsPopup} from './Statistics_components/TagsPopup'
 import day from 'dayjs';
 
 const RecordList = styled.div`
@@ -19,7 +20,7 @@ const RecordList = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 100px;
+    width: 60px;
   }
 
   > .note {
@@ -27,54 +28,7 @@ const RecordList = styled.div`
     margin-left: 16px;
     color: #999;
   }
-
-  > .popup {
-    position: fixed;
-    border-radius: 12px;
-    background-color: #fff;
-    top: 25%;
-    left: 7.2%;
-    width: 85.6%;
-    height: 170px;
-    z-index: 999;
-
-    > .logo {
-      display: block;
-      background: #0080FF;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
-      padding: 2.7% 0;
-      margin: 0 auto;
-
-    }
-
-    > .allTags {
-      font-size: 24px;
-      margin-top: 8%;
-      width: 76%;
-      margin-left: 12%;
-      text-align: center
-    }
-
-    > .but {
-      margin-top: 10%;
-      > .close {
-        text-align: center;
-        background: #ff7c50;
-        display: block;
-        width: 30.4%;
-        margin: 0 auto;
-        font-size: 16px;
-        color: #fff;
-        font-weight: 700;
-        height: 36px;
-        border-radius: 12px;
-        line-height: 36px;
-      }
-    }
-  }
+  
 `;
 
 
@@ -102,11 +56,7 @@ const Statistics = () => {
           {/*<hr/>*/}
           {/*{day(item.createAt).format('YYYY年MM月DD日')}*/}
           {showAllTags &&
-          <div className="popup">
-              <div className="logo">标签</div>
-              <div className="allTags">{allTagNames}</div>
-              <div className="but"><span className="close" onClick={closeTags}>关闭</span></div>
-          </div>
+          <TagsPopup value={allTagNames} onChange={()=>closeTags()} />
           }
         </RecordList>);
       })}
