@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useRef} from 'react';
 import {useParams,useHistory} from 'react-router-dom';
 import {useTags} from '../useTags';
 import Layout from '../components/Layout';
@@ -53,6 +53,13 @@ const Tag: FC = () => {
   const onClickBack=()=>{
     history.goBack();
   }
+  const refInput = useRef<HTMLInputElement>(null)
+  const onBlur=(value:string)=>{
+    if(refInput.current!==null){
+      updateTag(tag.id, value)
+    }
+  }
+
   return (
     <Layout>
       <TopBar>
@@ -67,7 +74,9 @@ const Tag: FC = () => {
               <TagLabel>
                 <label>
                   <span>标签名</span>
-                  <input type="text" value={tag.name} onChange={(e) => updateTag(tag.id, e.target.value)}/>
+                  <input type="text" defaultValue={tag.name} onBlur={(e)=>onBlur(e.target.value)} ref={refInput}/>
+
+                  {/*<input type="text" value={tag.name} onChange={(e) => updateTag(tag.id, e.target.value)}/>*/}
                 </label>
               </TagLabel>
               <Space/>
