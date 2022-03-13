@@ -62,7 +62,10 @@ const useTags = () => {
     history.goBack();
 
   };
-  return {tags, setTags, findTag, updateTag, deleteTag, addTag};
+  const getNames = (ids:number[])=>{
+    return tags.filter(tag=>ids.indexOf(tag.id)>=0).map(tag=>tag.name).join('，');
+  }
+  return {tags, setTags, findTag, updateTag, deleteTag, addTag,getNames};
 };
 
 export {useTags};

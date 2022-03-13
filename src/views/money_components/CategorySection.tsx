@@ -13,15 +13,19 @@ const Wrapper = styled.section`
       position: relative;
       padding: 16px 0;
 
-      &.selected::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 3px;
-        background-color: #333;
-        position: absolute;
-        bottom: 0;
-        left: 0;
+      &.selected{
+        background-color:#D8D8D8;
+        color:#0080FF;
+        ::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 3px;
+          background-color: #333;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+      }
       }
     }
   }
