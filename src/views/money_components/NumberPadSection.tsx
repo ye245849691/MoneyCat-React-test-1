@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 
 const Wrapper = styled.section`
   > .output {
@@ -65,9 +65,13 @@ type Props = {
 }
 const NumberPadSection: FC<Props> = (props) => {
   // const output = props.value.toString()
+
   const [output, _setOutput] = useState(props.value.toString());
+  useEffect(()=>{
+    _setOutput(props.value.toString())
+  },[props.value])
   const setOutput = (output: string) => {
-    let newOutput: string;
+    let newOutput;
     if (output.length > 16) {
       newOutput = output.slice(0, 16);
     } else if (output.length === 0) {
@@ -78,6 +82,7 @@ const NumberPadSection: FC<Props> = (props) => {
     _setOutput(newOutput);
     props.onChange(parseFloat(newOutput));
   };
+
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) return;
@@ -137,7 +142,7 @@ const NumberPadSection: FC<Props> = (props) => {
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button className="ok">ok</button>
+        <button className="ok">OK</button>
         <button className="zero">0</button>
         <button>.</button>
       </div>
