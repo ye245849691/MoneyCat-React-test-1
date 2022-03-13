@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
-import {createId} from './lib/createId';
+import {createId} from '../lib/createId';
 import {useHistory} from 'react-router-dom';
+import {useUpdate} from './useUpdate';
 
 
 const useTags = () => {
@@ -17,7 +18,7 @@ const useTags = () => {
     }
     setTags(localTag);
   }, []);
-  useEffect(() => {
+  useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
   }, [tags]);
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
