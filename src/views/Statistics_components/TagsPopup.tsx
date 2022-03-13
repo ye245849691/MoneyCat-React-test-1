@@ -61,7 +61,7 @@ const TagsPopup: FC<Props> = (props) => {
   return (
     <Wrapper>
       <div className="logo">标签</div>
-      <div className="allTags">{props.value}</div>
+      <div className="allTags">{props.value?props.value:<span>无标签</span>}</div>
       <div className="but"><span className="close" onClick={props.onChange}>关闭</span></div>
     </Wrapper>
   );
