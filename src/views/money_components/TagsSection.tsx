@@ -8,23 +8,30 @@ const Wrapper = styled.section`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
-  > ol {
-    margin: 0 -12px;
-
-    > li {
-      display: inline-block;
-      border-radius: 18px;
-      background-color: #D9D9D9;
-      padding: 3px 18px;
-      margin: 8px 12px;
-      font-size: 14px;
-      &.selected{
-        color: orange;
+  flex-shrink: 1;
+  overflow: auto;
+  >div{
+    flex-shrink: 1;
+    overflow: auto;
+    overflow-x: hidden;
+    > ol {
+      margin: 0 -12px;
+      > li {
+        display: inline-block;
+        border-radius: 18px;
+        background-color: #D9D9D9;
+        padding: 3px 18px;
+        margin: 8px 12px;
+        font-size: 14px;
+        &.selected{
+          color: orange;
+        }
       }
     }
   }
+  
 
   > button {
     background: none;
@@ -53,11 +60,14 @@ const TagsSection:FC<Props> = (props)=>{
   }
   return(
     <Wrapper>
+
+      <div>
       <ol>
         {tags.map(tag=><li key={tag.id} onClick={()=>onToggleTag(tag.id)}
           className={selectedTags.indexOf(tag.id)>=0?'selected':''}
         >{tag.name}</li>)}
       </ol>
+      </div>
       <button onClick={addTag}>新增标签</button>
     </Wrapper>
   )
