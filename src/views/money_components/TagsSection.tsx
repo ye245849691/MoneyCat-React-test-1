@@ -8,7 +8,7 @@ const Wrapper = styled.section`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: flex-start;
   flex-shrink: 1;
   overflow: auto;
