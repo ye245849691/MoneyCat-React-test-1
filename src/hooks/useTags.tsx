@@ -20,7 +20,7 @@ const useTags = () => {
   }, []);
   useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
-  }, [tags]);
+  }, tags);
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const addTag = () => {
     const tagName = window.prompt('请输入新的标签名');
